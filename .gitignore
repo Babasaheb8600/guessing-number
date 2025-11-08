@@ -1,0 +1,28 @@
+# Maven / target
+/target/
+/pom.xml.tag
+pom.xml.next
+release.properties
+
+# Java
+*.class
+*.jar
+*.war
+
+# IDE
+/.idea/
+/*.iml
+/.vscode/
+/*.log
+/.project
+/.classpath
+.settings/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# keys
+*.pem
+*.key
+*.pub
