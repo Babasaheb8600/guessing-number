@@ -1,18 +1,10 @@
-FROM ubuntu:25.10
+FROM eclipse-temurin:17-jdk-alpine
 
-ENV JAVA_HOME=/u01/middleware/openlogic-openjdk-17.0.16+8-linux-x64
-ENV PATH=$PATH:${JAVA_HOME}/bin
-ENV CLASSPATH=/u01/apps/guessing-number-1.0.jar
+WORKDIR /app
 
-RUN mkdir -p /u01/middleware
-RUN mkdir -p /u01/apps
+COPY target/guessing-number-1.0.jar app.jar
 
-WORKDIR /u01/middleware
-ADD https://builds.openlogic.com/downloadJDK/openlogic-openjdk/17.0.16+8/openlogic-openjdk-17.0.16+8-linux-x64.tar.gz .
-RUN tar -xzvf openlogic-openjdk-17.0.16+8-linux-x64.tar.gz
-RUN rm openlogic-openjdk-17.0.16+8-linux-x64.tar.gz
+EXPOSE 8080
 
-WORKDIR /u01/apps
-COPY target/guessing-number-1.0.jar .
+ENTRYPOINT ["java","-jar","app.jar"]
 
-CMD ["java", "com.gn.run.GuessingNumberApplication"]
